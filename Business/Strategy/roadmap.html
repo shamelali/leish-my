@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EastelPro — Roadmap Pembinaan Website</title>
+<meta name="description" content="Roadmap lengkap pembinaan website EastelPro dari mockup ke production. 6 fasa, 12 minggu.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+<style>
+:root{--bg:#0a0d12;--card:#121822;--card2:#161f2d;--muted:#8b9bb4;--text:#eaf1ff;--accent:#2ee6a6;--accent2:#5b8cff;--warn:#ffcc4d;--danger:#ff6b6b;--border:#1c2638;--radius:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+.container{max-width:860px;margin:0 auto;padding:0 24px}
+.header{padding:44px 0 28px;border-bottom:1px solid var(--border);text-align:center;background:radial-gradient(800px 400px at 50% -10%,rgba(46,230,166,.12),transparent)}
+.header h1{font-size:clamp(24px,5vw,34px);font-weight:800;margin-bottom:6px}
+.header .sub{color:var(--muted);font-size:14px;max-width:560px;margin:0 auto}
+.header .meta{display:flex;gap:16px;justify-content:center;margin-top:14px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.header .meta .tag{background:var(--card);border:1px solid var(--border);padding:4px 12px;border-radius:999px}
+h2{font-size:22px;font-weight:700;margin:36px 0 16px;padding-left:16px;border-left:4px solid var(--accent)}
+h3{font-size:17px;font-weight:600;margin:24px 0 10px}
+p{margin:8px 0;color:var(--muted);font-size:14px}
+p strong{color:var(--text)}
+ul{margin:8px 0 12px 20px;color:var(--muted);font-size:14px}
+ul li{margin:6px 0}
+ul li strong{color:var(--text)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin:16px 0}
+.card h3{margin-top:0}
+.warn-box{background:rgba(255,204,77,.06);border:1px solid rgba(255,204,77,.15);border-radius:var(--radius);padding:18px;margin:16px 0}
+.warn-box p{color:var(--warn);font-size:13px}
+.danger-box{background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.15);border-radius:var(--radius);padding:18px;margin:16px 0}
+.danger-box p{color:var(--danger);font-size:13px}
+.highlight-box{background:rgba(46,230,166,.06);border:1px solid rgba(46,230,166,.15);border-radius:var(--radius);padding:18px;margin:16px 0}
+.highlight-box p{color:var(--text);font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{color:var(--text);font-weight:600;background:var(--card2);font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+td{color:var(--muted)}
+td strong{color:var(--text)}
+/* Phase timeline */
+.timeline{position:relative;padding-left:32px;margin:20px 0}
+.timeline::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:2px;background:var(--border)}
+.phase{position:relative;margin-bottom:32px}
+.phase .dot{position:absolute;left:-26px;top:6px;width:20px;height:20px;border-radius:50%;border:2px solid var(--border);background:var(--bg);z-index:1}
+.phase.p1 .dot{border-color:var(--danger);background:rgba(255,107,107,.1)}
+.phase.p2 .dot{border-color:var(--warn);background:rgba(255,204,77,.1)}
+.phase.p3 .dot{border-color:var(--accent2);background:rgba(91,140,255,.1)}
+.phase.p4 .dot{border-color:var(--accent);background:rgba(46,230,166,.1)}
+.phase.p5 .dot{border-color:#a855f7;background:rgba(168,85,247,.1)}
+.phase.p6 .dot{border-color:#f97316;background:rgba(249,115,22,.1)}
+.phase .phase-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.phase .phase-num{font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+.phase.p1 .phase-num{background:rgba(255,107,107,.1);color:var(--danger);border:1px solid rgba(255,107,107,.3)}
+.phase.p2 .phase-num{background:rgba(255,204,77,.1);color:var(--warn);border:1px solid rgba(255,204,77,.3)}
+.phase.p3 .phase-num{background:rgba(91,140,255,.1);color:var(--accent2);border:1px solid rgba(91,140,255,.3)}
+.phase.p4 .phase-num{background:rgba(46,230,166,.1);color:var(--accent);border:1px solid rgba(46,230,166,.3)}
+.phase.p5 .phase-num{background:rgba(168,85,247,.1);color:#a855f7;border:1px solid rgba(168,85,247,.3)}
+.phase.p6 .phase-num{background:rgba(249,115,22,.1);color:#f97316;border:1px solid rgba(249,115,22,.3)}
+.phase h3{font-size:17px;margin:0}
+.phase .weeks{font-size:12px;color:var(--muted)}
+.phase-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:10px 0}
+.phase-card h4{font-size:14px;margin-bottom:6px}
+.phase-card p{font-size:13px;color:var(--muted);margin:4px 0}
+.phase-card ul{font-size:12px;margin:8px 0 0 16px}
+.phase-card ul li{margin:3px 0}
+/* Tech stack pills */
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.pill{font-size:11px;padding:4px 10px;border-radius:999px;background:var(--card2);border:1px solid var(--border);color:var(--muted);font-weight:600}
+.pill.fe{border-color:rgba(46,230,166,.2);color:var(--accent)}
+.pill.be{border-color:rgba(91,140,255,.2);color:var(--accent2)}
+.pill.infra{border-color:rgba(255,204,77,.2);color:var(--warn)}
+.pill.db{border-color:rgba(168,85,247,.2);color:#a855f7}
+.pill.third{border-color:rgba(249,115,22,.2);color:#f97316}
+/* Decision matrix */
+.decision{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.decision-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+.decision-card h4{font-size:14px;margin-bottom:6px}
+.decision-card p{font-size:12px;color:var(--muted);margin:3px 0}
+.decision-card.recommended{border-color:var(--accent);box-shadow:0 0 16px rgba(46,230,166,.08)}
+.decision-card .rec{display:inline-block;background:var(--accent);color:#0a0d12;font-size:9px;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:6px}
+footer{text-align:center;padding:28px 24px;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+@media(max-width:600px){.decision{grid-template-columns:1fr}table{font-size:11px}th,td{padding:6px 8px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>🗺️ Roadmap Pembinaan Website</h1>
+    <p class="sub">Dari 19 HTML mockup ke production website — 6 fasa, ~12 minggu, stack yang practical untuk Malaysia.</p>
+    <div class="meta">
+      <span class="tag">📅 Mulai: Jul 2026</span>
+      <span class="tag">⏱️ Estimasi: 12 Minggu</span>
+      <span class="tag">💰 Budget: RM5K–25K</span>
+      <span class="tag">👥 Team: 1–3 orang</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- CURRENT STATE -->
+<h2>📍 Di Mana Kita Sekarang</h2>
+<div class="highlight-box">
+  <p>✅ <strong>Semua mockup siap</strong> — 19 file HTML/CSS/JS, calculator interaktif, portal demo, dashboard demo, map, referral generator. Ini adalah <strong>blueprint lengkap</strong> — sekarang perlu convert ke code sebenar dengan backend, database, dan integrasi.</p>
+</div>
+
+<!-- TECH DECISIONS -->
+<h2>🛠️ Keputusan Tech Stack</h2>
+
+<h3>Frontend Framework</h3>
+<div class="decision">
+  <div class="decision-card recommended">
+    <h4>Next.js 14+ (App Router) <span class="rec">Recommended</span></h4>
+    <p>✅ Site asal dah guna Next.js</p>
+    <p>✅ SSR + static hybrid — SEO friendly</p>
+    <p>✅ Vercel deploy 1-click</p>
+    <p>✅ API routes built-in</p>
+    <p>✅ TypeScript support</p>
+  </div>
+  <div class="decision-card">
+    <h4>Alternatif: Remix / Nuxt</h4>
+    <p>Remix: Bagus tapi ecosystem kecil</p>
+    <p>Nuxt: Kalau team lebih biasa Vue</p>
+    <p>⚠️ Perlu migrate semua mockup</p>
+  </div>
+</div>
+
+<h3>Database</h3>
+<div class="decision">
+  <div class="decision-card recommended">
+    <h4>Supabase (PostgreSQL) <span class="rec">Recommended</span></h4>
+    <p>✅ Free tier generous</p>
+    <p>✅ Auth + OTP built-in</p>
+    <p>✅ Real-time subscriptions</p>
+    <p>✅ Row Level Security (PDPA)</p>
+    <p>✅ Dashboard admin ready</p>
+  </div>
+  <div class="decision-card">
+    <h4>Alternatif: PlanetScale + Prisma</h4>
+    <p>PlanetScale: MySQL-compatible, bagus untuk scale</p>
+    <p>⚠️ Free tier limited sejak 2024</p>
+    <p>⚠️ Perlu separate auth solution</p>
+  </div>
+</div>
+
+<h3>Payment Gateway</h3>
+<div class="decision">
+  <div class="decision-card recommended">
+    <h4>Billplz <span class="rec">Recommended</span></h4>
+    <p>✅ FPX + e-wallet (TnG, Boost, GrabPay)</p>
+    <p>✅ Fee rendah (1.5% FPX)</p>
+    <p>✅ Malaysia-based, BM support</p>
+    <p>✅ Recurring payment support</p>
+  </div>
+  <div class="decision-card">
+    <h4>Alternatif: Stripe / ToyyibPay</h4>
+    <p>Stripe: Global tapi fee tinggi (2.9%+30¢)</p>
+    <p>ToyyibPay: Murah tapi limited features</p>
+    <p>⚠️ Stripe perlu SSM registration</p>
+  </div>
+</div>
+
+<h3>SMS / OTP</h3>
+<div class="decision">
+  <div class="decision-card recommended">
+    <h4>Infobip / Vonage <span class="rec">Recommended</span></h4>
+    <p>✅ Malaysia coverage kuat</p>
+    <p>✅ OTP flow built-in</p>
+    <p>✅ Competitive pricing MY routes</p>
+  </div>
+  <div class="decision-card">
+    <h4>Alternatif: Twilio</h4>
+    <p>Global standard, docs bagus</p>
+    <p>⚠️ MY SMS lebih mahal</p>
+    <p>⚠️ Delivery rate MY kadang slow</p>
+  </div>
+</div>
+
+<h3>Full Stack Summary</h3>
+<div class="card">
+  <div class="pills">
+    <span class="pill fe">Next.js 14</span>
+    <span class="pill fe">TypeScript</span>
+    <span class="pill fe">Tailwind CSS</span>
+    <span class="pill be">Next.js API Routes</span>
+    <span class="pill db">Supabase PostgreSQL</span>
+    <span class="pill db">Supabase Auth</span>
+    <span class="pill db">Supabase Storage</span>
+    <span class="pill db">Supabase Realtime</span>
+    <span class="pill third">Billplz (Payment)</span>
+    <span class="pill third">Infobip (SMS/OTP)</span>
+    <span class="pill infra">Vercel (Hosting)</span>
+    <span class="pill infra">Cloudflare (CDN/DNS)</span>
+    <span class="pill third">GA4 + Meta CAPI</span>
+    <span class="pill third">Leaflet (Map)</span>
+  </div>
+</div>
+
+<!-- PHASES -->
+<h2>📅 6 Fasa Pembinaan</h2>
+
+<div class="timeline">
+
+  <!-- PHASE 1 -->
+  <div class="phase p1">
+    <div class="dot"></div>
+    <div class="phase-header">
+      <span class="phase-num">Fasa 1</span>
+      <h3>Foundation & Auth</h3>
+      <span class="weeks">⏱️ Minggu 1–2</span>
+    </div>
+    <div class="phase-card">
+      <h4>🎯 Goal: Next.js project live + OTP login berfungsi</h4>
+      <ul>
+        <li>Initialize Next.js 14 App Router project</li>
+        <li>Setup Tailwind CSS — convert mockup styles to components</li>
+        <li>Setup Supabase project — tables, RLS policies</li>
+        <li>OTP login flow: nombor telefon → SMS OTP → verify → session</li>
+        <li>Middleware: redirect authenticated users to dashboard</li>
+        <li>Consent table: 3 toggle per user (wifi, eastel_marketing, owner_marketing)</li>
+        <li>Deploy ke Vercel — custom domain + SSL</li>
+      </ul>
+      <p><strong>Deliverable:</strong> User boleh login dengan nombor telefon + OTP. Dashboard kosong accessible.</p>
+      <div class="pills" style="margin-top:8px">
+        <span class="pill fe">Next.js</span><span class="pill db">Supabase Auth</span><span class="pill third">Infobip</span><span class="pill infra">Vercel</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase p2">
+    <div class="dot"></div>
+    <div class="phase-header">
+      <span class="phase-num">Fasa 2</span>
+      <h3>Captive Portal + CRM</h3>
+      <span class="weeks">⏱️ Minggu 3–5</span>
+    </div>
+    <div class="phase-card">
+      <h4>🎯 Goal: Tetamu boleh sambung WiFi, owner nampak lead real-time</h4>
+      <ul>
+        <li>Captive portal page (production): phone → OTP → 3 consent → connected</li>
+        <li>60 saat free internet flow (sebelum gate)</li>
+        <li>30 minit session timer (server-side)</li>
+        <li>Lead capture → simpan ke Supabase <code>leads</code> table</li>
+        <li>Analytics Engine: rate limit OTP, auto-gantung spam</li>
+        <li>Owner dashboard: lead list real-time (Supabase Realtime)</li>
+        <li>Lead status tagging: Hot / Warm / Cold / Baru</li>
+        <li>Consent log: simpan setiap consent event (PDPA audit trail)</li>
+        <li>CSV export untuk owner (lead data + consent history)</li>
+        <li>"STOP EASTEL" opt-out handler → update consent → stop all marketing</li>
+      </ul>
+      <p><strong>Deliverable:</strong> Captive portal berfungsi penuh. Owner nampak lead masuk real-time.</p>
+      <div class="pills" style="margin-top:8px">
+        <span class="pill fe">Next.js Routes</span><span class="pill db">Supabase Realtime</span><span class="pill be">API Routes</span><span class="pill third">Infobip</span>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <p>⚠️ <strong>Captive portal router integration</strong> — ini part paling teknikal. Perlu configure router firmware (OpenWrt/dd-wrt) atau guna hardware yang support Walled Garden. Cadangan: mula dengan <strong>web-based portal</strong> dulu (redirect DNS), baru kemudian integrate hardware.</p>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase p3">
+    <div class="dot"></div>
+    <div class="phase-header">
+      <span class="phase-num">Fasa 3</span>
+      <h3>Payment + SIM Order</h3>
+      <span class="weeks">⏱️ Minggu 6–7</span>
+    </div>
+    <div class="phase-card">
+      <h4>🎯 Goal: User boleh bayar RM9.90/bln & tempah SIM</h4>
+      <ul>
+        <li>Integrate Billplz — FPX + e-wallet checkout</li>
+        <li>Subscription recurring: RM9.90/bulan auto-charge</li>
+        <li>Free trial flow: 7 hari → upgrade prompt → payment</li>
+        <li>SIM order form → simpan ke <code>orders</code> table</li>
+        <li>Order tracking: status workflow (Diterima → Diproses → Dalam Penghantaran → Diterima)</li>
+        <li>Webhook dari kurir (J&T/NinjaVan) → auto update tracking</li>
+        <li>WhatsApp notification: order confirm, tracking number, SIM activated</li>
+        <li>Grace period handler: payment gagal → 7 hari → downgrade ke Free</li>
+      </ul>
+      <p><strong>Deliverable:</strong> Full checkout flow. Subscription recurring berfungsi. SIM order tracked.</p>
+      <div class="pills" style="margin-top:8px">
+        <span class="pill third">Billplz</span><span class="pill be">Webhooks</span><span class="pill db">Supabase</span><span class="pill third">WhatsApp API</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase p4">
+    <div class="dot"></div>
+    <div class="phase-header">
+      <span class="phase-num">Fasa 4</span>
+      <h3>Komisen Engine + Referral</h3>
+      <span class="weeks">⏱️ Minggu 8–9</span>
+    </div>
+    <div class="phase-card">
+      <h4>🎯 Goal: Komisen dikira auto, referral link berfungsi</h4>
+      <ul>
+        <li>Referral link generator: unique ID per user → UTM tracking</li>
+        <li>Referral attribution: lead dari referral link → credit ke referrer</li>
+        <li>Komisen engine: RM3/active referral/bulan — cron job hari ke-15</li>
+        <li>Revenue Sharing calculator → actual payout (T1-T3 formula)</li>
+        <li>Onboarding Bonus → auto calculate berdasarkan blok</li>
+        <li>ESK Bonus → Level 1-3 calculation</li>
+        <li>Komisen dashboard: ringkasan, breakdown, belum dibayar</li>
+        <li>Withdrawal request → minimum RM50 → approve & bank transfer</li>
+        <li>Fraud detection: self-referral block, phantom referral flag</li>
+        <li>4 calculator interaktif → share WhatsApp deep link</li>
+      </ul>
+      <p><strong>Deliverable:</strong> Komisen dikira & dibayar automatik. Referral viral loop berfungsi.</p>
+      <div class="pills" style="margin-top:8px">
+        <span class="pill be">Cron Jobs</span><span class="pill db">Supabase Functions</span><span class="pill fe">Calculator</span>
+      </div>
+    </div>
+
+    <div class="danger-box">
+      <p>🚫 <strong>CRITICAL:</strong> Struktur komisen multilevel (T1-T3, ESK 3 level) PERLU semakan undang-undang dengan peguam KPDN/AJL sebelum launch. Risiko klasifikasi skim piramid jika tidak di-daftar.</p>
+    </div>
+  </div>
+
+  <!-- PHASE 5 -->
+  <div class="phase p5">
+    <div class="dot"></div>
+    <div class="phase-header">
+      <span class="phase-num">Fasa 5</span>
+      <h3>Polish + SEO + Analytics</h3>
+      <span class="weeks">⏱️ Minggu 10–11</span>
+    </div>
+    <div class="phase-card">
+      <h4>🎯 Goal: Website ready untuk launch — SEO, analytics, performance</h4>
+      <ul>
+        <li>Convert semua 19 mockup ke Next.js pages + Tailwind</li>
+        <li>SEO: meta tags, OG image, sitemap, robots.txt, FAQ schema</li>
+        <li>Performance: image optimization, lazy loading, code splitting</li>
+        <li>GA4 + Meta CAPI: 9 funnel events + Consent Mode v2</li>
+        <li>UTM tracking on all links</li>
+        <li>Mobile responsive audit — test on 10+ devices</li>
+        <li>Accessibility audit (WCAG 2.1 AA)</li>
+        <li>Wakil Kawasan map — Leaflet with real data from Supabase</li>
+        <li>QR code generator — real QR with referral link</li>
+        <li>404 page, loading states, error boundaries</li>
+        <li>Rate limiting & security headers</li>
+      </ul>
+      <p><strong>Deliverable:</strong> Production-ready website. SEO score 90+. Analytics tracking all events.</p>
+      <div class="pills" style="margin-top:8px">
+        <span class="pill fe">Tailwind</span><span class="pill third">GA4 + Meta</span><span class="pill infra">Vercel Edge</span><span class="pill third">Leaflet</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 6 -->
+  <div class="phase p6">
+    <div class="dot"></div>
+    <div class="phase-header">
+      <span class="phase-num">Fasa 6</span>
+      <h3>Launch + Growth</h3>
+      <span class="weeks">⏱️ Minggu 12+</span>
+    </div>
+    <div class="phase-card">
+      <h4>🎯 Goal: Go live & scale</h4>
+      <ul>
+        <li>Custom domain: eastelpro.com (bukan vercel.app)</li>
+        <li>DNS: Cloudflare proxy → Vercel</li>
+        <li>Staging environment: preview deploy per PR</li>
+        <li>UAT testing: 5–10 beta testers (owner hotspot sebenar)</li>
+        <li>PDPA final review dengan peguam</li>
+        <li>MCMC registration / notification</li>
+        <li>AJL registration (jika perlu untuk komisen structure)</li>
+        <li>Launch: soft launch → collect feedback → iterate</li>
+        <li>Ads: Facebook + TikTok — target kedai kopi, salon, restoran</li>
+        <li>Wakil Kawasan onboarding — recruit 10–20 wakil awal</li>
+        <li>Content marketing: blog "WiFi Marketing Tips untuk Kedai"</li>
+      </ul>
+      <p><strong>Deliverable:</strong> Website live di eastelpro.com. Beta users aktif. Ads running.</p>
+      <div class="pills" style="margin-top:8px">
+        <span class="pill infra">Cloudflare</span><span class="pill infra">Vercel Prod</span><span class="pill third">Meta Ads</span><span class="pill third">TikTok Ads</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DATABASE SCHEMA -->
+<h2>🗃️ Database Schema (Supabase)</h2>
+<div class="card">
+  <table>
+    <tr><th>Table</th><th>Key Fields</th><th>Relations</th></tr>
+    <tr><td><strong>users</strong></td><td>id, phone, name, role (guest/owner), plan (free/pro), created_at</td><td>→ leads, consents, referrals, commissions</td></tr>
+    <tr><td><strong>leads</strong></td><td>id, owner_id, phone, name, status (hot/warm/cold/new), source (portal/referral/landing), created_at</td><td>→ users (owner_id)</td></tr>
+    <tr><td><strong>consents</strong></td><td>id, user_id, type (wifi/eastel/owner), granted, version, ip_address, created_at</td><td>→ users</td></tr>
+    <tr><td><strong>consent_logs</strong></td><td>id, user_id, action (granted/revoked), type, ip_address, timestamp</td><td>→ users</td></tr>
+    <tr><td><strong>hotspots</strong></td><td>id, owner_id, name, location, status (active/prep), ssid, daily_leads</td><td>→ users (owner_id)</td></tr>
+    <tr><td><strong>sim_orders</strong></td><td>id, user_id, plan, type (new/mnp), amount, status, tracking, courier</td><td>→ users</td></tr>
+    <tr><td><strong>subscriptions</strong></td><td>id, user_id, plan, status (trial/active/past_due), started_at, expires_at</td><td>→ users</td></tr>
+    <tr><td><strong>payments</strong></td><td>id, user_id, amount, method, billplz_id, status, created_at</td><td>→ users, subscriptions</td></tr>
+    <tr><td><strong>referrals</strong></td><td>id, referrer_id, referred_id, code, status (pending/active/churned), activated_at</td><td>→ users (both)</td></tr>
+    <tr><td><strong>commissions</strong></td><td>id, user_id, type (affiliate/rev_share/onb/esk), amount, period, status (pending/paid)</td><td>→ users</td></tr>
+    <tr><td><strong>wakil_kawasan</strong></td><td>id, name, phone, area, state, lat, lng, rating, total_delivered</td><td>—</td></tr>
+    <tr><td><strong>withdrawals</strong></td><td>id, user_id, amount, method, status, requested_at, processed_at</td><td>→ users</td></tr>
+    <tr><td><strong>wifi_sessions</strong></td><td>id, guest_phone, hotspot_id, ip, started_at, duration_sec, consent_version</td><td>→ hotspots</td></tr>
+  </table>
+  <p style="font-size:12px;color:var(--muted);margin-top:8px">Total: 13 tables. Row Level Security (RLS) wajib pada setiap table — owner hanya nampak data sendiri, guest nampak data sendiri.</p>
+</div>
+
+<!-- BUDGET -->
+<h2>💰 Anggaran Budget</h2>
+<div class="card">
+  <table>
+    <tr><th>Item</th><th>DIY (1 orang)</th><th>Freelance (2–3 orang)</th><th>Agency</th></tr>
+    <tr><td><strong>Fasa 1–2: Foundation + Portal</strong></td><td>RM0 (time sahaja)</td><td>RM3,000–5,000</td><td>RM8,000–15,000</td></tr>
+    <tr><td><strong>Fasa 3: Payment + SIM</strong></td><td>RM0</td><td>RM2,000–3,000</td><td>RM5,000–8,000</td></tr>
+    <tr><td><strong>Fasa 4: Komisen + Referral</strong></td><td>RM0</td><td>RM2,000–3,500</td><td>RM5,000–8,000</td></tr>
+    <tr><td><strong>Fasa 5: Polish + SEO</strong></td><td>RM0</td><td>RM1,500–2,500</td><td>RM3,000–5,000</td></tr>
+    <tr><td><strong>Fasa 6: Launch + Legal</strong></td><td>RM500–2,000</td><td>RM1,000–2,000</td><td>RM3,000–5,000</td></tr>
+    <tr style="border-top:2px solid var(--border)"><td><strong>TOTAL DEV</strong></td><td><strong style="color:var(--accent)">RM500–2,000</strong></td><td><strong style="color:var(--accent)">RM9,500–16,000</strong></td><td><strong style="color:var(--accent)">RM24,000–41,000</strong></td></tr>
+  </table>
+  
+  <h3 style="margin-top:16px">Monthly Operating Costs</h3>
+  <table>
+    <tr><th>Service</th><th>Free Tier</th><th>Production (est.)</th></tr>
+    <tr><td>Vercel Hosting</td><td>✅ Free (hobby)</td><td>RM0 (free tier cukup untuk awal)</td></tr>
+    <tr><td>Supabase</td><td>✅ Free (500MB, 50K rows)</td><td>RM0–75/bln (pro tier bila scale)</td></tr>
+    <tr><td>Billplz</td><td>No monthly fee</td><td>1.5% per transaction</td></tr>
+    <tr><td>Infobip SMS</td><td>Free trial</td><td>~RM0.08–0.15/SMS Malaysia</td></tr>
+    <tr><td>Cloudflare</td><td>✅ Free</td><td>RM0</td></tr>
+    <tr><td>Custom Domain</td><td>—</td><td>~RM50–80/tahun</td></tr>
+    <tr style="border-top:2px solid var(--border)"><td><strong>Total Monthly</strong></td><td></td><td><strong style="color:var(--accent)">~RM75–150/bln</strong> (sebelum scale)</td></tr>
+  </table>
+</div>
+
+<!-- RISKS -->
+<h2>⚠️ Risks & Mitigation</h2>
+<div class="card">
+  <table>
+    <tr><th>Risk</th><th>Impact</th><th>Mitigation</th></tr>
+    <tr><td><strong>Komisen MLM classification</strong></td><td style="color:var(--danger)">Critical</td><td>Semak dengan peguam KPDN/AJL sebelum launch. Pastikan komisen dari jualan sebenar sahaja.</td></tr>
+    <tr><td><strong>MCMC "5G" claim</strong></td><td style="color:var(--danger)">High</td><td>Guna "5G-ready" bukan "5G Eastel" jika MVNO. Semak dengan Eastel telco.</td></tr>
+    <tr><td><strong>Captive portal router setup</strong></td><td style="color:var(--warn)">Medium</td><td>Mula dengan DNS redirect (web-based). Hardware integration kemudian.</td></tr>
+    <tr><td><strong>SMS OTP delivery rate</strong></td><td style="color:var(--warn)">Medium</td><td>Test 3 provider (Infobip, Vonage, Twilio). Fallback ke WhatsApp OTP.</td></tr>
+    <tr><td><strong>PDPA enforcement</strong></td><td style="color:var(--warn)">Medium</td><td>3 consent toggle + 7 tahun log + DPO. Dah ada dalam mockup.</td></tr>
+    <tr><td><strong>Payment gateway rejection</strong></td><td style="color:var(--warn)">Medium</td><td>Billplz + ToyyibPay sebagai backup. SSM registration wajib.</td></tr>
+  </table>
+</div>
+
+<!-- IMMEDIATE NEXT STEPS -->
+<h2>🚀 Langkah Seterusnya — SEKARANG</h2>
+
+<div class="highlight-box">
+  <p>✅ <strong>7 perkara yang perlu buat MINGGU INI</strong> untuk mula Fasa 1:</p>
+</div>
+
+<div class="card">
+  <ol style="margin-left:20px;font-size:14px;color:var(--muted)">
+    <li style="margin:10px 0"><strong style="color:var(--text)">Register SSM</strong> — EastelPro Sdn Bhd (jika belum). Wajib untuk Billplz, custom domain, dan legal.</li>
+    <li style="margin:10px 0"><strong style="color:var(--text)">Register Supabase account</strong> — free tier. Create project "eastelpro-prod". Dapat URL + anon key + service key.</li>
+    <li style="margin:10px 0"><strong style="color:var(--text)">Initialize Next.js project</strong> — <code>npx create-next-app@latest eastelpro --typescript --tailwind --app</code></li>
+    <li style="margin:10px 0"><strong style="color:var(--text)">Register Infobip account</strong> — free trial. Dapat API key untuk SMS OTP Malaysia.</li>
+    <li style="margin:10px 0"><strong style="color:var(--text)">Register Billplz account</strong> — perlukan SSM. Dapat API key + X-Signature key.</li>
+    <li style="margin:10px 0"><strong style="color:var(--text)">Beli domain eastelpro.com</strong> — ~RM50–80/tahun. Point DNS ke Vercel.</li>
+    <li style="margin:10px 0"><strong style="color:var(--text)">Semak dengan peguam</strong> — struktur komisen T1-T3 + ESK perlu review KPDN/AJL.</li>
+  </ol>
+</div>
+
+<div class="warn-box">
+  <p>⚠️ <strong>Jangan launch iklan sebelum Fasa 1–3 siap & UAT.</strong> Tanpa payment + portal berfungsi, traffic akan bounce dan burn budget.</p>
+</div>
+
+<!-- WHO DOES WHAT -->
+<h2>👥 Cadangan Team</h2>
+<div class="card">
+  <table>
+    <tr><th>Role</th><th>Tanggungjawab</th><th>Option</th></tr>
+    <tr><td><strong>Full-stack Developer</strong></td><td>Next.js + Supabase + API routes + deployment</td><td>DIY / Freelance (RM5K–8K)</td></tr>
+    <tr><td><strong>UI/UX Designer</strong></td><td>Polish mockup → Figma → Tailwind components</td><td>Mockup dah ada, minimal work</td></tr>
+    <tr><td><strong>Copywriter BM</strong></td><td>Refine copy, blog content, ad copy</td><td>Freelance (RM1K–2K)</td></tr>
+    <tr><td><strong>Peguam</strong></td><td>PDPA review, KPDN/AJL, T&C final</td><td>One-off RM2K–5K</td></tr>
+    <tr><td><strong>QA Tester</strong></td><td>Test all flows on real devices</td><td>DIY / friends & family</td></tr>
+  </table>
+  <p style="font-size:12px;color:var(--muted);margin-top:8px">Minimum viable team: <strong>1 full-stack developer + 1 peguam</strong>. Lain-lain boleh DIY dari mockup yang dah siap.</p>
+</div>
+
+</div>
+
+<footer>
+  <p>© 2026 EastelPro · Roadmap Pembinaan Website · 13 Julai 2026</p>
+  <p style="margin-top:4px">Anggaran berdasarkan market rate Malaysia Q3 2026. Harga boleh berbeza mengikut keperluan sebenar.</p>
+</footer>
+
+</body>
+</html>

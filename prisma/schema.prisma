@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum BookingStatus {
+  PENDING_QUOTE
+  QUOTE_RETURNED
+  DEPOSIT_HELD
+  COMPLETED
+  CANCELLED
+}
+
+model Artist {
+  id           String    @id @default(uuid())
+  name         String
+  category     String
+  baseLocation String
+  isVerified   Boolean   @default(false)
+  baseRate     Decimal   @db.Decimal(10, 2)
+  bookings     Booking[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([category, baseLocation, isVerified])
+}
+
+model Booking {
+  id              String        @id @default(uuid())
+  clientId        String
+  artistId        String
+  artist          Artist        @relation(fields: [artistId], references: [id])
+  eventDate       DateTime
+  status          BookingStatus @default(PENDING_QUOTE)
+  quotedAmount    Decimal?      @db.Decimal(10, 2)
+  travelFee       Decimal       @default(0.00) @db.Decimal(10, 2)
+  depositAmount   Decimal?      @db.Decimal(10, 2)
+  billplzInvoiceId String?      @unique
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  ledger          PlatformLedger?
+
+  @@index([artistId, eventDate, status])
+  @@index([clientId, createdAt])
+}
+
+model PlatformLedger {
+  id              String   @id @default(uuid())
+  bookingId       String   @unique
+  booking         Booking  @relation(fields: [bookingId], references: [id])
+  grossAmount     Decimal  @db.Decimal(10, 2)
+  commissionFee   Decimal  @db.Decimal(10, 2)
+  vendorPayout    Decimal  @db.Decimal(10, 2)
+  payoutStatus    String   @default("PENDING")
+  createdAt       DateTime @default(now())
+}
+
+model RefundAuditLog {
+  id           String   @id @default(uuid())
+  bookingId    String
+  initiatedBy  String
+  reason       String
+  amount       Decimal  @db.Decimal(10, 2)
+  processedAt  DateTime @default(now())
+}
