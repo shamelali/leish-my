@@ -2,6 +2,7 @@
   "name": "leish-my",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,9 +16,9 @@
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
-    "next": "15.3.4",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "next": "16.3.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "recharts": "^2.12.7"
   },
   "devDependencies": {
@@ -27,8 +28,8 @@
     "@typescript-eslint/eslint-plugin": "^8.70.0",
     "@typescript-eslint/parser": "^8.70.0",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "15.3.4",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.3.4",
     "postcss": "^8.4.47",
     "prisma": "^5.22.0",
     "tailwindcss": "^3.4.0",
