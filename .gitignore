@@ -57,3 +57,4 @@ Docs/
 
 # Submodules/external repos
 leish-qwen/
+.env*
